@@ -13,9 +13,13 @@ class UsersController < ApplicationController
     user.save!
   end
 
-  def delete
+  def destroy
     user = User.find(user_id)
-    user.destroy!
+    if user&.valid_password?(params[:password])
+      user.destroy!
+    else
+      head(:unauthorized)
+    end
   end
 
   protected
