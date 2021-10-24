@@ -6,14 +6,14 @@ class UsersController < ApplicationController
     user.save!
   end
 
-  def update(user_id)
+  def update
     user = User.find(user_id)
     user.email = params[:email] if params[:email].present?
     user.password = params[:password] if params[:password].present?
     user.save!
   end
 
-  def delete(user_id)
+  def delete
     user = User.find(user_id)
     user.destroy!
   end
